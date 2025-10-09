@@ -7,7 +7,7 @@ export default function Nav() {
 		<nav
 			role='navigation'
 			aria-label='Primary'
-			className='bg-[var(--blue)] rounded-lg w-[221px] h-[50px]'
+			className='bg-[var(--blue)] rounded-lg w-[221px] h-[50px] shadow-[0_3px_10px_rgb(0,0,0,0.2)]'
 		>
 			<div className='flex h-full items-center justify-center gap-9'>
 				<a
