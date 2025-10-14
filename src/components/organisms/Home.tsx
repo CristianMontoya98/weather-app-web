@@ -4,7 +4,6 @@ import { getUserLocation } from '../../helpers/getUserLocation';
 
 export default function HomeComponent() {
 	const [city, setCity] = useState<any>(null);
-	const [cityName, setCityName] = useState<any>(null);
 	const [weatherData, setWeatherData] = useState<any>(null);
 
 	useEffect(() => {
@@ -29,7 +28,7 @@ export default function HomeComponent() {
 	}
 
 	return (
-		<div>
+		<div className='mt-5'>
 			<h2 className='font-bold text-[var(--lightBlue)] text-[20px]'>{city?.local_names.es}</h2>
 		</div>
 	);
