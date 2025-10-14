@@ -7,7 +7,7 @@ type SearchIconProps = {
 	className?: string;
 };
 
-export const SearchIcon: React.FC<SearchIconProps> = ({ width = 20, height = 21, color = '#9CA3AF', className }) => {
+export const SearchIcon: React.FC<SearchIconProps> = ({ width = 20, height = 21, color = 'currentColor', className }) => {
 	return (
 		<svg
 			width={width}

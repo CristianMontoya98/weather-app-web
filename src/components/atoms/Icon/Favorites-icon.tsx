@@ -7,7 +7,7 @@ type FavoritesIconProps = {
 	className?: string;
 };
 
-export const FavoritesIcon: React.FC<FavoritesIconProps> = ({ width = 20, height = 19, color = '#9CA3AF', className }) => {
+export const FavoritesIcon: React.FC<FavoritesIconProps> = ({ width = 20, height = 19, color = 'currentColor', className }) => {
 	return (
 		<svg
 			width={width}
