@@ -11,36 +11,30 @@ export default function Nav() {
 		>
 			<div className='flex h-full items-center justify-center gap-9'>
 				<a
-					className='cursor-pointer'
+					className='cursor-pointer text-[var(--gray)] hover:text-[var(--lightBlue)] transition-all duration-200 hover:scale-110'
 					href=''
 				>
 					<HomeIcon
 						width={20}
 						height={21}
-						color={'var(--gray)'}
-						className='cursor-pointer'
 					/>
 				</a>
 				<a
-					className='cursor-pointer'
+					className='cursor-pointer text-[var(--gray)] hover:text-[var(--lightBlue)] transition-all duration-200 hover:scale-110'
 					href=''
 				>
 					<SearchIcon
 						width={20}
 						height={21}
-						color={'var(--gray)'}
-						className='cursor-pointer'
 					/>
 				</a>
 				<a
-					className='cursor-pointer'
+					className='cursor-pointer text-[var(--gray)] hover:text-[var(--lightBlue)] transition-all duration-200 hover:scale-110'
 					href=''
 				>
 					<FavoritesIcon
 						width={20}
 						height={19}
-						color={'var(--gray)'}
-						className='cursor-pointer'
 					/>
 				</a>
 			</div>
