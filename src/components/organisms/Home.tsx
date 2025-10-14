@@ -10,7 +10,6 @@ export default function HomeComponent() {
 
 	useEffect(() => {
 		getUserLocation().then((locationData: any) => {
-			console.log('Datos de ubicación:', locationData);
 			setCity(locationData[0]);
 		});
 	}, []);
@@ -21,7 +20,6 @@ export default function HomeComponent() {
 			fetch(weatherUrl)
 				.then((response) => response.json())
 				.then((data) => {
-					console.log('datos en segundo llamado, ', data);
 					setWeatherData(data);
 				});
 		}
