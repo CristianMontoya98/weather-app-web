@@ -11,7 +11,6 @@ export const getUserLocation = async() => {
                     const locationUrl = API_ENDPOINTS.CURRENT_LOCATION(coordinates[0],coordinates[1] );
                     const response = await fetch(locationUrl);
                     locationData = await response.json();
-                  
                 } catch (error) {
                     console.log('Error al obtener ubicación:', error);
                 }
