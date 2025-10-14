@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useFetch } from '../../hooks/useFetch';
 import { API_ENDPOINTS } from '../../services/api';
 import { getUserLocation } from '../../helpers/getUserLocation';
 
