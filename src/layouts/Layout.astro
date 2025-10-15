@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Nav from '../components/molecules/Nav';
+const { currentPage } = Astro.props;
 ---
 
 <!doctype html>
@@ -36,7 +37,10 @@ import Nav from '../components/molecules/Nav';
 		<title>Weather App</title>
 	</head>
 	<body class='h-screen w-screen bg-[var(--background)] pt-4 flex flex-col items-center'>
-		<Nav client:load />
+		<Nav
+			client:load
+			currentPage={currentPage}
+		/>
 
 		<slot />
 	</body>
