@@ -2,7 +2,14 @@ import HomeIcon from '../atoms/Icon/Home-icon';
 import SearchIcon from '../atoms/Icon/Search-icon';
 import FavoritesIcon from '../atoms/Icon/Favorites-icon';
 
-export default function Nav() {
+interface NavProps {
+	currentPage?: string;
+}
+
+export default function Nav({ currentPage }: NavProps) {
+	const isHomeActive = currentPage === 'home';
+	// Puedes añadir más como: const isSearchActive = currentPage === 'search';
+
 	return (
 		<nav
 			role='navigation'
@@ -11,8 +18,10 @@ export default function Nav() {
 		>
 			<div className='flex h-full items-center justify-center gap-9'>
 				<a
-					className='cursor-pointer text-[var(--gray)] hover:text-[var(--lightBlue)] transition-all duration-200 hover:scale-110'
-					href=''
+					href='/'
+					className={`cursor-pointer transition-all duration-200 hover:scale-110 hover:text-[var(--lightBlue)] ${
+						isHomeActive ? 'text-[var(--lightBlue)] scale-110' : 'text-[var(--gray)]'
+					}`}
 				>
 					<HomeIcon
 						width={20}
@@ -20,8 +29,8 @@ export default function Nav() {
 					/>
 				</a>
 				<a
-					className='cursor-pointer text-[var(--gray)] hover:text-[var(--lightBlue)] transition-all duration-200 hover:scale-110'
-					href=''
+					className='cursor-pointer text-[var(--gray)] hover:text-[var(--lightBlue)] transition-all duration-200 hover:scale-110' // Aplica la misma lógica aquí para otras páginas
+					href='/search' // Es buena práctica añadir las rutas correctas
 				>
 					<SearchIcon
 						width={20}
@@ -30,7 +39,7 @@ export default function Nav() {
 				</a>
 				<a
 					className='cursor-pointer text-[var(--gray)] hover:text-[var(--lightBlue)] transition-all duration-200 hover:scale-110'
-					href=''
+					href='/favorites'
 				>
 					<FavoritesIcon
 						width={20}
