@@ -18,6 +18,7 @@ export default function Nav({ currentPage }: NavProps) {
 		>
 			<div className='flex h-full items-center justify-center gap-9'>
 				<a
+					aria-label='Home'
 					href='/'
 					className={`cursor-pointer transition-all duration-200 hover:scale-110 hover:text-[var(--lightBlue)] ${
 						isHomeActive ? 'text-[var(--lightBlue)] scale-110' : 'text-[var(--gray)]'
@@ -29,6 +30,7 @@ export default function Nav({ currentPage }: NavProps) {
 					/>
 				</a>
 				<a
+					aria-label='Search'
 					className='cursor-pointer text-[var(--gray)] hover:text-[var(--lightBlue)] transition-all duration-200 hover:scale-110' // Aplica la misma lógica aquí para otras páginas
 					href='/search' // Es buena práctica añadir las rutas correctas
 				>
@@ -38,6 +40,7 @@ export default function Nav({ currentPage }: NavProps) {
 					/>
 				</a>
 				<a
+					aria-label='Favorites'
 					className='cursor-pointer text-[var(--gray)] hover:text-[var(--lightBlue)] transition-all duration-200 hover:scale-110'
 					href='/favorites'
 				>
