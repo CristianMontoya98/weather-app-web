@@ -6,7 +6,8 @@
   --blue: #0D1B2A;
   --gray: #9CA3AF;
   --lightBlue: #A7CDFF;
-  --lightBlueTransparency: rgba(177, 211, 255, 0.57);
+  --lighterBlue: #DAEAFF;
+  --lightBlueTransparency: #6783A0;
 }
 
 body {
