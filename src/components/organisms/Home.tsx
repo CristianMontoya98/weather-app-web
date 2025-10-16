@@ -31,8 +31,8 @@ export default function HomeComponent() {
 	return (
 		<div className='mt-5 flex flex-col items-center justify-center'>
 			<h2 className='font-bold text-[var(--lightBlue)] text-[20px]'>{city?.local_names.es}</h2>
-			<p className='font-bold text-[var(--lightBlue)] text-[64px]'>{weatherData.main.temp}°C</p>
-			<p className='font-bold text-[var(--lightBlue)] text-[20px]'>{weatherData.weather[0].description}</p>
+			<p className='font-bold text-[var(--lightBlue)] text-[64px]'>{weatherData?.main.temp}°C</p>
+			<p className='font-bold text-[var(--lightBlue)] text-[20px]'>{weatherData?.weather[0].description}</p>
 		</div>
 	);
 }
