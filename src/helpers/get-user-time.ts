@@ -1,8 +1,4 @@
-interface UserTime {
-  date: string;
-  time: string;
-}
-
+import type { UserTime } from '../types/user';
 export const getUserTime = (): { userTime: UserTime } => {
   const now = new Date();
 
