@@ -2,6 +2,7 @@
 Weather project to see local and international weather, in this app you can:
 - 🏠 See the local weather without search.
 - 🌎 Search the weather of othr cities in the world
+- ♥️ Add cities to your favorites
   
 
 ## 🛠️ Tech stack
