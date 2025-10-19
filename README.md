@@ -8,6 +8,7 @@ Weather project to see local and international weather, in this app you can:
 ## 🛠️ Tech stack
 
 - 🚀 [Astro js](https://astro.build)
+- ⚛️ [React js](https://react.dev)
 - 💅 [Tailwind](https://tailwindcss.com)
 
 ## ✨ Sections
