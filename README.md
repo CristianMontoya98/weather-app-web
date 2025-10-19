@@ -13,9 +13,8 @@ Weather project to see local and international weather, in this app you can:
 
 ## ✨ Sections
 - 🏠 Home
-- 💼 Experience
-- 🧔‍♂️ About me
-- 💻 Projects
+- 🔍 Search
+- ♥️ Favorites
 
 ## 🪄 Features
 - English and Spanish button translations
