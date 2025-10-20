@@ -7,6 +7,7 @@ import type { UserTime } from '../../types/user';
 export default function HomeComponent() {
 	const [city, setCity] = useState<any>(null);
 	const [weatherData, setWeatherData] = useState<any>(null);
+	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [currentTime, setCurrentTime] = useState<UserTime>(getUserTime().userTime);
 
 	useEffect(() => {
@@ -27,18 +28,26 @@ export default function HomeComponent() {
 				.then((response) => response.json())
 				.then((data) => {
 					setWeatherData(data);
-					console.log(data);
+					setIsLoading(false);
 				});
 		}
 	}, [city]);
 
+	if (isLoading) {
+		return (
+			<div className='mt-5 flex flex-col items-center justify-center'>
+				<p className='font-bold text-[var(--lightBlue)] text-[20px]'>Cargando...</p>
+			</div>
+		);
+	}
+
 	return (
 		<div className='mt-5 flex flex-col items-center justify-center'>
-			<h2 className='font-bold text-[var(--lightBlue)] text-[20px]'>{city?.local_names.es}</h2>
-			<p className='font-bold text-[var(--lighterBlue)] text-[20px]'>{currentTime.date}</p>
-			<p className='font-bold text-[var(--lightBlueTransparency)] text-[20px]'>{currentTime.time}</p>
-			<p className='font-bold text-[var(--lightBlue)] text-[64px]'>{weatherData?.main.temp}°C</p>
-			<p className='font-bold text-[var(--lightBlue)] text-[20px]'>{weatherData?.weather[0].description}</p>
+			<h2 className='font-bold text-[var(--lightBlue)] text-[20px]'>{city?.local_names?.es || city?.name}</h2>
+			<p className='font-bold text-[var(--lighterBlue)] text-[20px]'>{currentTime?.date}</p>
+			<p className='font-bold text-[var(--lightBlueTransparency)] text-[20px]'>{currentTime?.time}</p>
+			<p className='font-bold text-[var(--lightBlue)] text-[64px]'>{weatherData?.main?.temp}°C</p>
+			<p className='font-bold text-[var(--lightBlue)] text-[20px]'>{weatherData?.weather[0]?.description}</p>
 		</div>
 	);
 }
