@@ -3,12 +3,14 @@ import { API_ENDPOINTS } from '../../services/api';
 import { getUserLocation } from '../../helpers/get-user-location';
 import { getUserTime } from '../../helpers/get-user-time';
 import type { UserTime } from '../../types/user';
+import Icons from '../atoms/Icon/WeatherIcons';
 
 export default function HomeComponent() {
 	const [city, setCity] = useState<any>(null);
 	const [weatherData, setWeatherData] = useState<any>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [currentTime, setCurrentTime] = useState<UserTime>(getUserTime().userTime);
+	const [icon, setIcon] = useState<string>('');
 
 	useEffect(() => {
 		getUserLocation().then((locationData: any) => {
@@ -28,6 +30,8 @@ export default function HomeComponent() {
 				.then((response) => response.json())
 				.then((data) => {
 					setWeatherData(data);
+					setIcon(data.weather[0].main);
+					console.log(data);
 					setIsLoading(false);
 				});
 		}
@@ -44,6 +48,11 @@ export default function HomeComponent() {
 	return (
 		<div className='mt-5 flex flex-col items-center justify-center'>
 			<h2 className='font-bold text-[var(--lightBlue)] text-[20px]'>{city?.local_names?.es || city?.name}</h2>
+			<img
+				className='icon'
+				src={Icons(icon)}
+				alt='icon-weather'
+			/>
 			<p className='font-bold text-[var(--lighterBlue)] text-[20px]'>{currentTime?.date}</p>
 			<p className='font-bold text-[var(--lightBlueTransparency)] text-[20px]'>{currentTime?.time}</p>
 			<p className='font-bold text-[var(--lightBlue)] text-[64px]'>{weatherData?.main?.temp}°C</p>
