@@ -32,15 +32,18 @@ export default function HomeComponent() {
 					setWeatherData(data);
 					setIcon(data.weather[0].main);
 					console.log(data);
-					setIsLoading(false);
+					const loadingData = setInterval(() => {
+						setIsLoading(false);
+					}, 1000);
+					return () => clearInterval(loadingData);
 				});
 		}
 	}, [city]);
 
 	if (isLoading) {
 		return (
-			<div className='mt-5 flex flex-col items-center justify-center'>
-				<p className='font-bold text-[var(--lightBlue)] text-[20px]'>Cargando...</p>
+			<div className='mt-5 flex flex-col items-center justify-center w-screen h-screen'>
+				<div className='loader'></div>
 			</div>
 		);
 	}
