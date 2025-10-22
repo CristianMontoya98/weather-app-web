@@ -8,7 +8,8 @@ interface NavProps {
 
 export default function Nav({ currentPage }: NavProps) {
 	const isHomeActive = currentPage === 'home';
-	// Puedes añadir más como: const isSearchActive = currentPage === 'search';
+	const isSearchActive = currentPage === 'search';
+	const isFavoritesActive = currentPage === 'favorites';
 
 	return (
 		<nav
@@ -31,8 +32,10 @@ export default function Nav({ currentPage }: NavProps) {
 				</a>
 				<a
 					aria-label='Search'
-					className='cursor-pointer text-[var(--gray)] hover:text-[var(--lightBlue)] transition-all duration-200 hover:scale-110' // Aplica la misma lógica aquí para otras páginas
-					href='/search' // Es buena práctica añadir las rutas correctas
+					className={`cursor-pointer transition-all duration-200 hover:scale-110 hover:text-[var(--lightBlue)] ${
+						isSearchActive ? 'text-[var(--lightBlue)] scale-110' : 'text-[var(--gray)]'
+					}`}
+					href='/search'
 				>
 					<SearchIcon
 						width={20}
@@ -41,7 +44,9 @@ export default function Nav({ currentPage }: NavProps) {
 				</a>
 				<a
 					aria-label='Favorites'
-					className='cursor-pointer text-[var(--gray)] hover:text-[var(--lightBlue)] transition-all duration-200 hover:scale-110'
+					className={`cursor-pointer transition-all duration-200 hover:scale-110 hover:text-[var(--lightBlue)] ${
+						isFavoritesActive ? 'text-[var(--lightBlue)] scale-110' : 'text-[var(--gray)]'
+					}`}
 					href='/favorites'
 				>
 					<FavoritesIcon
