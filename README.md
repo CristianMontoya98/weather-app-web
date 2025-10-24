@@ -15,3 +15,6 @@ Weather project to see local and international weather, in this app you can:
 - 🏠 Home
 - 🔍 Search
 - ♥️ Favorites
+
+## ℹ️ API used
+- [OpenWeather](https://openweathermap.org/api)
