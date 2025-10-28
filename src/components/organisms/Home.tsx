@@ -13,8 +13,9 @@ export default function HomeComponent() {
 	const [icon, setIcon] = useState<string>('');
 
 	useEffect(() => {
-		getUserLocation().then((locationData: any) => {
-			setCity(locationData[0]);
+		getUserLocation().then((data: any) => {
+			setCity(data.locationData[0]);
+			console.log('forecast', data.locationForecastData);
 		});
 		const timer = setInterval(() => {
 			setCurrentTime(getUserTime().userTime);
