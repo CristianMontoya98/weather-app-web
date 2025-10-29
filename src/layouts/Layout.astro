@@ -36,11 +36,13 @@ const { currentPage } = Astro.props;
 		/>
 		<title>Weather App</title>
 	</head>
-	<body class='h-screen w-screen bg-[var(--background)] pt-4 flex flex-col items-center'>
-		<Nav
-			client:load
-			currentPage={currentPage}
-		/>
+	<body class='h-screen w-screen bg-[var(--background)] pt-4'>
+		<div class='w-full flex justify-center'>
+			<Nav
+				client:load
+				currentPage={currentPage}
+			/>
+		</div>
 
 		<slot />
 	</body>
