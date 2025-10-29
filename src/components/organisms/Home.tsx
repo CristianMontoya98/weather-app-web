@@ -53,16 +53,19 @@ export default function HomeComponent() {
 	return (
 		<div className='mt-5 flex flex-col items-center justify-center'>
 			<h2 className='font-bold text-[var(--lightBlue)] text-[20px]'>{city?.local_names?.es || city?.name}</h2>
+			<p className='font-bold text-[var(--lighterBlue)] text-[20px]'>{weatherData?.weather[0]?.description}</p>
 			<img
 				className='icon'
 				src={Icons(icon)}
 				alt='icon-weather'
+				width={300}
+				height={300}
 			/>
 			<p className='font-bold text-[var(--lighterBlue)] text-[20px]'>{currentTime?.date}</p>
 			<p className='font-bold text-[var(--lightBlueTransparency)] text-[20px]'>{currentTime?.time}</p>
 			<p className='font-bold text-[var(--lightBlue)] text-[64px]'>{weatherData?.main?.temp}°C</p>
-			<p className='font-bold text-[var(--lightBlue)] text-[20px]'>{weatherData?.weather[0]?.description}</p>
-			<div className='flex gap-3 mt-5'>
+
+			<div className='flex gap-3'>
 				<HourForecastCard />
 				<HourForecastCard />
 				<HourForecastCard />
