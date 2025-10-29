@@ -4,6 +4,7 @@ import { getUserLocation } from '../../helpers/get-user-location';
 import { getUserTime } from '../../helpers/get-user-time';
 import type { UserTime } from '../../types/user';
 import Icons from '../atoms/Icon/WeatherIcons';
+import HourForecastCard from '../molecules/Hour-forecast-card';
 
 export default function HomeComponent() {
 	const [city, setCity] = useState<any>(null);
@@ -61,6 +62,11 @@ export default function HomeComponent() {
 			<p className='font-bold text-[var(--lightBlueTransparency)] text-[20px]'>{currentTime?.time}</p>
 			<p className='font-bold text-[var(--lightBlue)] text-[64px]'>{weatherData?.main?.temp}°C</p>
 			<p className='font-bold text-[var(--lightBlue)] text-[20px]'>{weatherData?.weather[0]?.description}</p>
+			<div className='flex gap-3 mt-5'>
+				<HourForecastCard />
+				<HourForecastCard />
+				<HourForecastCard />
+			</div>
 		</div>
 	);
 }
