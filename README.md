@@ -12,7 +12,7 @@ Weather project to see local and international weather, in this app you can:
 - 💅 [Tailwind](https://tailwindcss.com)
 
 ## ✨ Sections
-- 🏠 Home
+- 🏠 Home: See the current local weather and a three hour forecast.
 - 🔍 Search
 - ♥️ Favorites
 
