@@ -12,9 +12,9 @@ Weather project to see local and international weather, in this app you can:
 - 💅 [Tailwind](https://tailwindcss.com)
 
 ## ✨ Sections
-- 🏠 Home
-- 🔍 Search
-- ♥️ Favorites
+- 🏠 Home: See the current local weather and a three hour forecast.
+- 🔍 Search: Search any city of the world, visualize the card and expand the information.
+- ♥️ Favorites: Save your favorites.
 
 ## ℹ️ API used
 - [OpenWeather](https://openweathermap.org/api)
