@@ -7,6 +7,7 @@ import Icons from '../atoms/Icon/WeatherIcons';
 import HourForecastCard from '../molecules/Hour-forecast-card';
 
 export default function HomeComponent() {
+	const [forecastData, setForecastData] = useState<any>(null);
 	const [city, setCity] = useState<any>(null);
 	const [weatherData, setWeatherData] = useState<any>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -16,6 +17,7 @@ export default function HomeComponent() {
 	useEffect(() => {
 		getUserLocation().then((data: any) => {
 			setCity(data.locationData[0]);
+			setForecastData(data.locationForecastData);
 			console.log('forecast', data.locationForecastData);
 		});
 		const timer = setInterval(() => {
@@ -32,8 +34,8 @@ export default function HomeComponent() {
 				.then((response) => response.json())
 				.then((data) => {
 					setWeatherData(data);
+					console.log('weather', data);
 					setIcon(data.weather[0].main);
-					console.log(data);
 					const loadingData = setInterval(() => {
 						setIsLoading(false);
 					}, 1000);
@@ -66,9 +68,14 @@ export default function HomeComponent() {
 			<p className='font-bold text-[var(--lightBlue)] text-[64px]'>{weatherData?.main?.temp}°C</p>
 
 			<div className='flex gap-3'>
-				<HourForecastCard />
-				<HourForecastCard />
-				<HourForecastCard />
+				<HourForecastCard
+					title='Max'
+					data={`${weatherData?.main?.temp_max}°C`}
+				/>
+				<HourForecastCard
+					title='Min'
+					data={`${weatherData?.main?.temp_min}°C`}
+				/>
 			</div>
 		</div>
 	);
