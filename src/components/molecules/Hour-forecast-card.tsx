@@ -1,15 +1,14 @@
 import Icons from '../atoms/Icon/WeatherIcons';
+interface HourForecastProps {
+	title: string;
+	data: string;
+}
 
-export default function HourForecastCard() {
+export default function HourForecastCard({ title, data }: HourForecastProps) {
 	return (
 		<div className='bg-[var(--blue)] p-[14px] rounded-[13px] flex flex-col items-center justify-center'>
-			<img
-				className='icon'
-				src={Icons('Thunderstorm')}
-				alt='icon-weather'
-			/>
-			<p className='text-[var(--lighterBlue)] text-[20px]'>4:00 pm</p>
-			<p className='text-[var(--lightBlue)] text-[30px] font-bold'>20°C</p>
+			<p className='text-[var(--lighterBlue)] text-[20px]'>{title}</p>
+			<p className='text-[var(--lightBlue)] text-[30px] font-bold'>{data}</p>
 		</div>
 	);
 }
