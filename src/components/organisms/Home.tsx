@@ -69,10 +69,14 @@ export default function HomeComponent() {
 				<TemperatureCard
 					title='Max'
 					data={`${weatherData?.main?.temp_max}°C`}
+					image='src/assets/icons/thermometer-warmer.svg'
+					alt='Imagen de termometro caliente'
 				/>
 				<TemperatureCard
 					title='Min'
 					data={`${weatherData?.main?.temp_min}°C`}
+					image='src/assets/icons/thermometer-colder.svg'
+					alt='Imagen de termometro frio'
 				/>
 			</div>
 		</div>
