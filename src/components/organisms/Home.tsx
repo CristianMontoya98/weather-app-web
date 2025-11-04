@@ -51,7 +51,7 @@ export default function HomeComponent() {
 	}
 
 	return (
-		<div className='mt-5 flex flex-col items-center justify-center'>
+		<div className='mt-5 flex flex-col items-center justify-center pb-7'>
 			<h2 className='font-bold text-[var(--lightBlue)] text-[20px]'>{city?.local_names?.es || city?.name}</h2>
 			<p className='font-bold text-[var(--lighterBlue)] text-[20px]'>{weatherData?.weather[0]?.description}</p>
 			<img
