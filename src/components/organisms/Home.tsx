@@ -63,18 +63,18 @@ export default function HomeComponent() {
 			/>
 			<p className='font-bold text-[var(--lighterBlue)] text-[20px]'>{currentTime?.date}</p>
 			<p className='font-bold text-[var(--lightBlueTransparency)] text-[20px]'>{currentTime?.time}</p>
-			<p className='font-bold text-[var(--lightBlue)] text-[64px]'>{weatherData?.main?.temp}°C</p>
+			<p className='font-bold text-[var(--lightBlue)] text-[64px]'>{weatherData?.main?.temp ? `${Math.trunc(weatherData.main.temp)}°C` : ''}</p>
 
 			<div className='flex gap-3'>
 				<TemperatureCard
 					title='Max'
-					data={`${weatherData?.main?.temp_max}°C`}
+					data={weatherData?.main?.temp_max ? `${Math.trunc(weatherData.main.temp_max)}°C` : ''}
 					image='src/assets/icons/thermometer-warmer.svg'
 					alt='Imagen de termometro caliente'
 				/>
 				<TemperatureCard
 					title='Min'
-					data={`${weatherData?.main?.temp_min}°C`}
+					data={weatherData?.main?.temp_min ? `${Math.trunc(weatherData.main.temp_min)}°C` : ''}
 					image='src/assets/icons/thermometer-colder.svg'
 					alt='Imagen de termometro frio'
 				/>
