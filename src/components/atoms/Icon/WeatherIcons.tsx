@@ -19,7 +19,7 @@ const Icons = (icon: string) => {
 			icon = 'src/assets/icons/weather.svg';
 			break;
 		case 'Clouds':
-			icon = 'src/assets/icons/fog.svg';
+			icon = 'src/assets/icons/overcast.svg';
 			break;
 		case 'Fog':
 			icon = 'src/assets/icons/fog.svg';
