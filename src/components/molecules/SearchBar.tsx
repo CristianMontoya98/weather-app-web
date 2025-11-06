@@ -13,7 +13,7 @@ export default function SearchBar() {
 	};
 
 	return (
-		<form className='flex items-center gap-2 bg-[var(--blue)] p-2 rounded-lg w-full max-w-md shadow-[0_3px_10px_rgb(0,0,0,0.2)]'>
+		<form className='mt-5 ps-5 pe-5 flex items-center gap-2 bg-[var(--blue)] p-2 rounded-3xl w-full max-w-md shadow-[0_3px_10px_rgb(0,0,0,0.2)]'>
 			<input
 				type='text'
 				value={query}
