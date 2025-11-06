@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import SearchBar from '../components/molecules/SearchBar';
 ---
 
 <Layout currentPage='search' />
 <h1>Search</h1>
+<SearchBar client:load />
