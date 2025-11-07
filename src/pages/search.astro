@@ -1,9 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SearchBar from '../components/molecules/SearchBar';
+import SearchContainer from '../components/organisms/SearchContainer';
 ---
 
 <Layout currentPage='search' />
-<div class='w-full flex flex-col items-center'>
-	<SearchBar client:load />
-</div>
+<SearchContainer client:load />
