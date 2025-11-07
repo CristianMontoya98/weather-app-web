@@ -2,16 +2,17 @@ import { useState } from 'react';
 import SearchIcon from '../atoms/Icon/Search-icon';
 import { fetchWeather } from '../../services/fetch-weather';
 import { API_ENDPOINTS } from '../../services/api';
-
-export default function SearchBar() {
-	const [weatherData, setWeatherData] = useState<any>(null);
-	const [isLoading, setIsLoading] = useState<boolean>(true);
+interface SearchBarProps {
+	setWeatherData: any;
+	setIcon: any;
+	setIsLoading: any;
+}
+export default function SearchBar({ setWeatherData, setIcon, setIsLoading }: SearchBarProps) {
 	const [query, setQuery] = useState('');
-	const [icon, setIcon] = useState<string>('');
 	const handleSearch = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
+		setIsLoading(true);
 		fetchWeather(API_ENDPOINTS.CURRENT_WEATHER(query), setWeatherData, setIcon, setIsLoading);
-		console.log(weatherData);
 	};
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(e.target.value);
