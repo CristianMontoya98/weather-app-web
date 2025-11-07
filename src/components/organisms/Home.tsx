@@ -3,6 +3,7 @@ import { API_ENDPOINTS } from '../../services/api';
 import { getUserLocation } from '../../helpers/get-user-location';
 import { getUserTime } from '../../helpers/get-user-time';
 import type { UserTime } from '../../types/user';
+import { fetchWeather } from '../../helpers/fetch-weather';
 import Icons from '../atoms/Icon/WeatherIcons';
 import TemperatureCard from '../molecules/Temperature-card';
 
@@ -16,7 +17,6 @@ export default function HomeComponent() {
 	useEffect(() => {
 		getUserLocation().then((data: any) => {
 			setCity(data.locationData[0]);
-			console.log('forecast', data.locationForecastData);
 		});
 		const timer = setInterval(() => {
 			setCurrentTime(getUserTime().userTime);
@@ -27,18 +27,7 @@ export default function HomeComponent() {
 
 	useEffect(() => {
 		if (city) {
-			const weatherUrl = API_ENDPOINTS.CURRENT_WEATHER(city.name);
-			fetch(weatherUrl)
-				.then((response) => response.json())
-				.then((data) => {
-					setWeatherData(data);
-					console.log('weather', data);
-					setIcon(data.weather[0].main);
-					const loadingData = setInterval(() => {
-						setIsLoading(false);
-					}, 1000);
-					return () => clearInterval(loadingData);
-				});
+			fetchWeather(API_ENDPOINTS.CURRENT_WEATHER(city.name), setWeatherData, setIcon, setIsLoading);
 		}
 	}, [city]);
 
