@@ -1,3 +1,5 @@
+import SearchingIllustration from '../atoms/illustrations/Searching-illustration';
+
 interface SearchCardsProps {
 	isLoading: boolean;
 	weather: any;
@@ -18,8 +20,11 @@ export default function SearchCardsContainer({ isLoading, weather }: SearchCards
 		);
 	}
 	return (
-		<div className='w-full flex flex-col items-center'>
-			<h1>No data</h1>
+		<div className='w-full flex flex-col items-center mt-[100px]'>
+			<SearchingIllustration
+				height={300}
+				width={300}
+			/>
 		</div>
 	);
 }
