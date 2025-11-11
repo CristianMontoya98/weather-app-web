@@ -28,6 +28,7 @@ export default function SearchBar({ setWeatherData, setIcon, setIsLoading }: Sea
 				className='bg-transparent focus:outline-none text-white placeholder:text-[var(--gray)] w-full'
 			/>
 			<button
+				type='submit'
 				onClick={handleSearch}
 				className='text-[var(--gray)] hover:text-[var(--lightBlue)] transition-colors duration-200'
 			>
