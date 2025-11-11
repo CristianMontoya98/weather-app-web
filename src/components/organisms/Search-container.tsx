@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import SearchBar from '../molecules/SearchBar';
-import SearchCardsContainer from '../molecules/SearchCardsContainer';
+import SearchBar from '../molecules/Search-bar';
+import SearchCardsContainer from '../molecules/Search-cards-container';
 
 export default function SearchContainer() {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
