@@ -4,7 +4,7 @@ import { getUserLocation } from '../../helpers/get-user-location';
 import { getUserTime } from '../../helpers/get-user-time';
 import type { UserTime } from '../../types/user';
 import { fetchWeather } from '../../services/fetch-weather';
-import Icons from '../atoms/Icon/WeatherIcons';
+import Icons from '../atoms/Icon/Weather-icons';
 import TemperatureCard from '../molecules/Temperature-card';
 
 export default function HomeComponent() {
