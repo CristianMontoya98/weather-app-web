@@ -19,6 +19,6 @@ export const getUserTime = (): { userTime: UserTime } => {
   const currentTime = `${hours}:${minutes} ${ampm}`;
 
   return {
-    userTime: { date: `${dayOfWeek}, ${fullDate}`, time: currentTime },
+    userTime: { date: `${dayOfWeek}, ${fullDate}`, time: currentTime, ampm:ampm },
   };
 };
