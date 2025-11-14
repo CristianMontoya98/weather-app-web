@@ -1,5 +1,5 @@
 const Icons = (icon: string, time: any) => {
-	if (time === 'AM') {
+	if (time === 'day') {
 		switch (icon) {
 			case 'Thunderstorm':
 				icon = 'src/assets/icons/thunderstorms-day-rain.svg';
@@ -34,7 +34,7 @@ const Icons = (icon: string, time: any) => {
 			default:
 				icon = 'src/assets/icons/clear-day.svg';
 		}
-	} else if (time === 'PM') {
+	} else if (time === 'night') {
 		switch (icon) {
 			case 'Thunderstorm':
 				icon = 'src/assets/icons/thunderstorms-night-rain.svg';
