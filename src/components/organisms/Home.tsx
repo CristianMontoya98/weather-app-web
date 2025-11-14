@@ -27,6 +27,7 @@ export default function HomeComponent() {
 
 	useEffect(() => {
 		if (city) {
+			console.log(currentTime);
 			fetchWeather(API_ENDPOINTS.CURRENT_WEATHER(city.name), setWeatherData, setIcon, setIsLoading);
 		}
 	}, [city]);
@@ -45,7 +46,7 @@ export default function HomeComponent() {
 			<p className='font-bold text-[var(--lighterBlue)] text-[20px]'>{weatherData?.weather[0]?.description}</p>
 			<img
 				className='icon'
-				src={Icons(icon, currentTime?.ampm)}
+				src={Icons(icon, currentTime?.moment)}
 				alt='icon-weather'
 				width={300}
 				height={300}
