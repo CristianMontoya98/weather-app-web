@@ -48,13 +48,35 @@ export default function HomeComponent() {
 				className='icon'
 				src={Icons(icon, currentTime?.moment)}
 				alt='icon-weather'
-				width={300}
-				height={300}
+				width={250}
+				height={250}
 			/>
-			<p className='font-bold text-[var(--lighterBlue)] text-[20px]'>{currentTime?.date}</p>
-			<p className='font-bold text-[var(--lightBlueTransparency)] text-[20px]'>{currentTime?.time}</p>
-			<p className='font-bold text-[var(--lightBlue)] text-[64px]'>{weatherData?.main?.temp ? `${Math.trunc(weatherData.main.temp)}°C` : ''}</p>
 
+			<p className='font-bold text-[var(--lighterBlue)] text-[20px]'>{currentTime?.date}</p>
+
+			<p className='font-bold text-[var(--lightBlueTransparency)] text-[20px]'>{currentTime?.time}</p>
+
+			<p className='font-bold text-[var(--lightBlue)] text-[64px]'>{weatherData?.main?.temp ? `${Math.trunc(weatherData.main.temp)}°C` : ''}</p>
+			<div className='flex gap-9 justify-center items-center mb-[23px]'>
+				<div className='flex justify-center items-center'>
+					<img
+						src='src/assets/icons/humidity.svg'
+						alt='humidity icon'
+						width={60}
+						height={60}
+					/>
+					<p className='text-[var(--lighterBlue)] text-[20px]'>{weatherData?.main?.humidity ? `${weatherData.main.humidity}%` : ''}</p>
+				</div>
+				<div className='flex justify-center items-center gap-4'>
+					<img
+						src='src/assets/icons/mdi_sea-level-rise.svg'
+						alt='Sea level icon'
+						width={30}
+						height={30}
+					/>
+					<p className='text-[var(--lighterBlue)] text-[20px]'>{weatherData?.main?.sea_level ? `${weatherData.main.sea_level}mts` : ''}</p>
+				</div>
+			</div>
 			<div className='flex gap-3'>
 				<TemperatureCard
 					title='Max'
