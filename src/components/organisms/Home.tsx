@@ -46,7 +46,7 @@ export default function HomeComponent() {
 			<p className='font-bold text-[var(--lighterBlue)] text-[20px]'>{weatherData?.weather[0]?.description}</p>
 			<img
 				className='icon'
-				src={Icons(icon, currentTime?.moment)}
+				src={Icons(icon, false, currentTime?.moment)}
 				alt='icon-weather'
 				width={250}
 				height={250}
