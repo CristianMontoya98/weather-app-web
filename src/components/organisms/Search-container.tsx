@@ -15,6 +15,7 @@ export default function SearchContainer() {
 				setIsLoading={setIsLoading}
 			/>
 			<SearchCardsContainer
+				icon={icon}
 				isLoading={isLoading}
 				weather={weatherData}
 			/>
