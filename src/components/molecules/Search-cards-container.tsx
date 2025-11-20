@@ -1,10 +1,12 @@
 import SearchingIllustration from '../atoms/illustrations/Searching-illustration';
+import WeatherCard from './Weather-card';
 
 interface SearchCardsProps {
 	isLoading: boolean;
 	weather: any;
+	icon: string;
 }
-export default function SearchCardsContainer({ isLoading, weather }: SearchCardsProps) {
+export default function SearchCardsContainer({ isLoading, weather, icon }: SearchCardsProps) {
 	if (isLoading) {
 		return (
 			<div className='mt-5 flex flex-col items-center justify-center w-screen h-screen'>
@@ -15,7 +17,10 @@ export default function SearchCardsContainer({ isLoading, weather }: SearchCards
 	if (weather) {
 		return (
 			<div className='w-full flex flex-col items-center'>
-				<h1>Cards</h1>
+				<WeatherCard
+					weather={weather}
+					icon={icon}
+				/>
 			</div>
 		);
 	}
