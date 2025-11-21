@@ -7,7 +7,7 @@ interface WeatherCardProps {
 
 export default function WeatherCard({ weather, icon }: WeatherCardProps) {
 	return (
-		<div className='mt-20 cursor-pointer bg-gradient-to-br from-slate-900 to-slate-700 p-[14px] rounded-[13px] flex items-center w-[300px]'>
+		<div className='mt-20 cursor-pointer shadow-[5px_7px_6px_0px_rgba(0,_0,_0,_0.1)] bg-gradient-to-br from-slate-900 to-slate-700 p-[14px] rounded-[13px] flex items-center w-[300px]'>
 			<img
 				className='icon'
 				src={Icons(icon, true)}
