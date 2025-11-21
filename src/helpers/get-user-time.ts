@@ -18,12 +18,15 @@ export const getUserTime = (): { userTime: UserTime } => {
 
   if(ampm === 'PM'){
     if(hours >= 6 ){
-      moment = 'night'
+      moment = 'night';
     }
     else{
-      moment = 'day'
+      moment = 'day';
     }
   
+  }else{
+    moment = 'day';
+    
   }
 
   return {
