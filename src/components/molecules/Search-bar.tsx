@@ -6,13 +6,14 @@ interface SearchBarProps {
 	setWeatherData: any;
 	setIcon: any;
 	setIsLoading: any;
+	setIsNotFound: any;
 }
-export default function SearchBar({ setWeatherData, setIcon, setIsLoading }: SearchBarProps) {
+export default function SearchBar({ setWeatherData, setIcon, setIsLoading, setIsNotFound }: SearchBarProps) {
 	const [query, setQuery] = useState('');
 	const handleSearch = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 		setIsLoading(true);
-		fetchWeather(API_ENDPOINTS.CURRENT_WEATHER(query), setWeatherData, setIcon, setIsLoading);
+		fetchWeather(API_ENDPOINTS.CURRENT_WEATHER(query), setWeatherData, setIcon, setIsLoading, setIsNotFound);
 	};
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(e.target.value);
