@@ -27,8 +27,7 @@ export default function HomeComponent() {
 
 	useEffect(() => {
 		if (city) {
-			console.log(currentTime);
-			fetchWeather(API_ENDPOINTS.CURRENT_WEATHER(city.name), setWeatherData, setIcon, setIsLoading);
+			fetchWeather(API_ENDPOINTS.CURRENT_WEATHER(city.name), setWeatherData, setIcon, setIsLoading, false);
 		}
 	}, [city]);
 
