@@ -1,4 +1,5 @@
 import SearchingIllustration from '../atoms/illustrations/Searching-illustration';
+import NotFound from './Not-found';
 import WeatherCard from './Weather-card';
 
 interface SearchCardsProps {
@@ -18,7 +19,7 @@ export default function SearchCardsContainer({ isLoading, weather, icon, isNotFo
 	}
 	if (weather) {
 		if (weather?.cod === '404') {
-			return <h1>No se encontraron resultados</h1>;
+			return <NotFound />;
 		} else {
 			return (
 				<div className='w-full flex flex-col items-center'>
