@@ -9,7 +9,6 @@ interface SearchCardsProps {
 	isNotFound: boolean;
 }
 export default function SearchCardsContainer({ isLoading, weather, icon, isNotFound }: SearchCardsProps) {
-	/* console.log(isNotFound); */
 	if (isLoading) {
 		return (
 			<div className='mt-5 flex flex-col items-center justify-center w-screen h-screen'>
