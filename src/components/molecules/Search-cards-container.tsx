@@ -6,9 +6,8 @@ interface SearchCardsProps {
 	isLoading: boolean;
 	weather: any;
 	icon: string;
-	isNotFound: boolean;
 }
-export default function SearchCardsContainer({ isLoading, weather, icon, isNotFound }: SearchCardsProps) {
+export default function SearchCardsContainer({ isLoading, weather, icon }: SearchCardsProps) {
 	if (isLoading) {
 		return (
 			<div className='mt-5 flex flex-col items-center justify-center w-screen h-screen'>
