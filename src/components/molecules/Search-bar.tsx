@@ -6,14 +6,13 @@ interface SearchBarProps {
 	setWeatherData: any;
 	setIcon: any;
 	setIsLoading: any;
-	setIsNotFound: any;
 }
-export default function SearchBar({ setWeatherData, setIcon, setIsLoading, setIsNotFound }: SearchBarProps) {
+export default function SearchBar({ setWeatherData, setIcon, setIsLoading }: SearchBarProps) {
 	const [query, setQuery] = useState('');
 	const handleSearch = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 		setIsLoading(true);
-		fetchWeather(API_ENDPOINTS.CURRENT_WEATHER(query), setWeatherData, setIcon, setIsLoading, setIsNotFound);
+		fetchWeather(API_ENDPOINTS.CURRENT_WEATHER(query), setWeatherData, setIcon, setIsLoading);
 	};
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(e.target.value);
@@ -32,7 +31,7 @@ export default function SearchBar({ setWeatherData, setIcon, setIsLoading, setIs
 				id='searchBtn'
 				type='submit'
 				onClick={handleSearch}
-				className='text-[var(--gray)] hover:text-[var(--lightBlue)] transition-colors duration-200'
+				className='cursor-pointer text-[var(--gray)] hover:text-[var(--lightBlue)] transition-colors duration-200'
 			>
 				<SearchIcon />
 			</button>
