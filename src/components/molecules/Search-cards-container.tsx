@@ -6,8 +6,9 @@ interface SearchCardsProps {
 	isLoading: boolean;
 	weather: any;
 	icon: string;
+	onCardClick: () => void;
 }
-export default function SearchCardsContainer({ isLoading, weather, icon }: SearchCardsProps) {
+export default function SearchCardsContainer({ isLoading, weather, icon, onCardClick }: SearchCardsProps) {
 	if (isLoading) {
 		return (
 			<div className='mt-5 flex flex-col items-center justify-center w-screen h-screen'>
@@ -24,6 +25,7 @@ export default function SearchCardsContainer({ isLoading, weather, icon }: Searc
 					<WeatherCard
 						weather={weather}
 						icon={icon}
+						onCardClick={onCardClick}
 					/>
 				</div>
 			);
