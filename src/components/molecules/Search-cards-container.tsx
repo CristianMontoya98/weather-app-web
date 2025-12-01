@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import SearchingIllustration from '../atoms/illustrations/Searching-illustration';
 import NotFound from './Not-found';
 import WeatherCard from './Weather-card';
@@ -9,6 +10,11 @@ interface SearchCardsProps {
 	onCardClick: () => void;
 }
 export default function SearchCardsContainer({ isLoading, weather, icon, onCardClick }: SearchCardsProps) {
+	useEffect(() => {
+		if (weather) {
+			localStorage.setItem('weatherData', JSON.stringify(weather));
+		}
+	}, [weather]);
 	if (isLoading) {
 		return (
 			<div className='mt-5 flex flex-col items-center justify-center w-screen h-screen'>
