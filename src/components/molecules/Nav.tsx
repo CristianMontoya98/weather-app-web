@@ -7,6 +7,7 @@ interface NavProps {
 }
 
 export default function Nav({ currentPage }: NavProps) {
+	if (currentPage === 'detail') return null;
 	const isHomeActive = currentPage === 'home';
 	const isSearchActive = currentPage === 'search';
 	const isFavoritesActive = currentPage === 'favorites';
