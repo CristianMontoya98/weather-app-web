@@ -1,12 +1,26 @@
+import { useState, useEffect } from 'react';
 import Icons from '../atoms/Icon/Weather-icons';
 import TemperatureCard from '../molecules/Temperature-card';
 
-interface WeatherDetailViewProps {
-	weather: any;
-	icon: string;
-}
+export default function WeatherDetailView() {
+	const [weather, setWeather] = useState<any>(null);
 
-export default function WeatherDetailView({ weather, icon }: WeatherDetailViewProps) {
+	useEffect(() => {
+		const weatherDataString = localStorage.getItem('weatherData');
+		if (weatherDataString) {
+			setWeather(JSON.parse(weatherDataString));
+		}
+	}, []);
+
+	const icon = weather?.weather[0]?.main;
+
+	if (!weather) {
+		return (
+			<div className='mt-5 flex flex-col items-center justify-center w-screen h-screen'>
+				<div className='loader'></div>
+			</div>
+		);
+	}
 	return (
 		<div className='mt-5 flex flex-col items-center justify-center pb-7'>
 			<h2 className='font-bold text-[var(--lightBlue)] text-[20px]'>{weather?.name}</h2>
