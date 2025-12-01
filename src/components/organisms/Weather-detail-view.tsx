@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import Icons from '../atoms/Icon/Weather-icons';
 import TemperatureCard from '../molecules/Temperature-card';
+import BackIcon from '../atoms/Icon/Back-icon';
+import FavoritesIcon from '../atoms/Icon/Favorites-icon';
 
 export default function WeatherDetailView() {
 	const [weather, setWeather] = useState<any>(null);
@@ -23,6 +25,20 @@ export default function WeatherDetailView() {
 	}
 	return (
 		<div className='mt-5 flex flex-col items-center justify-center pb-7'>
+			<div className='w-full flex justify-between px-5'>
+				<BackIcon
+					onClick={() => window.history.back()}
+					className='text-[var(--lightBlue)] cursor-pointer font-bold'
+					width={29}
+					height={29}
+				/>
+				<FavoritesIcon
+					className='text-[var(--lightBlue)] cursor-pointer font-bold'
+					width={29}
+					height={29}
+				/>
+			</div>
+
 			<h2 className='font-bold text-[var(--lightBlue)] text-[20px]'>{weather?.name}</h2>
 			<p className='font-bold text-[var(--lighterBlue)] text-[20px]'>{weather?.weather[0]?.description}</p>
 			<img
