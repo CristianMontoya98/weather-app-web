@@ -3,6 +3,7 @@ import Icons from '../atoms/Icon/Weather-icons';
 import TemperatureCard from '../molecules/Temperature-card';
 import BackIcon from '../atoms/Icon/Back-icon';
 import FavoritesIcon from '../atoms/Icon/Favorites-icon';
+import FavoritesOutlineIcon from '../atoms/Icon/Favorites-outline-icon';
 
 export default function WeatherDetailView() {
 	const [weather, setWeather] = useState<any>(null);
@@ -28,14 +29,14 @@ export default function WeatherDetailView() {
 			<div className='w-full flex justify-between px-5'>
 				<BackIcon
 					onClick={() => window.history.back()}
-					className='text-[var(--lightBlue)] cursor-pointer font-bold'
+					className='text-[var(--lightBlue)] cursor-pointer font-bold transition-all duration-300 hover:scale-105 hover:-translate-y-2'
 					width={29}
 					height={29}
 				/>
-				<FavoritesIcon
-					className='text-[var(--lightBlue)] cursor-pointer font-bold'
-					width={29}
-					height={29}
+				<FavoritesOutlineIcon
+					className='text-[var(--lightBlue)] cursor-pointer font-bold duration-300 hover:scale-105 hover:-translate-y-2'
+					width={30}
+					height={30}
 				/>
 			</div>
 
