@@ -60,6 +60,15 @@ export default function WeatherDetailView() {
 					/>
 					<p className='text-[var(--lighterBlue)] text-[20px]'>{weather?.main?.humidity ? `${weather.main.humidity}%` : ''}</p>
 				</div>
+				<div className='flex justify-center items-center gap-4'>
+					<img
+						src='src/assets/icons/mdi_sea-level-rise.svg'
+						alt='Sea level icon'
+						width={30}
+						height={30}
+					/>
+					<p className='text-[var(--lighterBlue)] text-[20px]'>{weather?.main?.sea_level ? `${weather.main.sea_level}mts` : ''}</p>
+				</div>
 			</div>
 			<div className='flex gap-3'>
 				<TemperatureCard
