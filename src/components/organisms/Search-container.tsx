@@ -19,7 +19,6 @@ export default function SearchContainer() {
 				icon={icon}
 				isLoading={isLoading}
 				weather={weatherData}
-				onCardClick={() => (window.location.href = '/detail')}
 			/>
 		</div>
 	);

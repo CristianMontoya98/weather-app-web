@@ -7,9 +7,8 @@ interface SearchCardsProps {
 	isLoading: boolean;
 	weather: any;
 	icon: string;
-	onCardClick: () => void;
 }
-export default function SearchCardsContainer({ isLoading, weather, icon, onCardClick }: SearchCardsProps) {
+export default function SearchCardsContainer({ isLoading, weather, icon }: SearchCardsProps) {
 	useEffect(() => {
 		if (weather) {
 			localStorage.setItem('weatherData', JSON.stringify(weather));
@@ -31,7 +30,6 @@ export default function SearchCardsContainer({ isLoading, weather, icon, onCardC
 					<WeatherCard
 						weather={weather}
 						icon={icon}
-						onCardClick={onCardClick}
 					/>
 				</div>
 			);
