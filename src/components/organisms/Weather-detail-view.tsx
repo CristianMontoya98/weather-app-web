@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import Icons from '../atoms/Icon/Weather-icons';
 import TemperatureCard from '../molecules/Temperature-card';
 import BackIcon from '../atoms/Icon/Back-icon';
@@ -7,6 +7,7 @@ import FavoritesOutlineIcon from '../atoms/Icon/Favorites-outline-icon';
 
 export default function WeatherDetailView() {
 	const [weather, setWeather] = useState<any>(null);
+	const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
 	useEffect(() => {
 		const weatherDataString = localStorage.getItem('weatherData');
@@ -33,11 +34,21 @@ export default function WeatherDetailView() {
 					width={29}
 					height={29}
 				/>
-				<FavoritesOutlineIcon
-					className='text-[var(--lightBlue)] cursor-pointer font-bold duration-300 hover:scale-105 hover:-translate-y-2'
-					width={30}
-					height={30}
-				/>
+				{isFavorite ? (
+					<FavoritesIcon
+						onClick={() => setIsFavorite(false)}
+						className='text-[var(--lightBlue)] cursor-pointer font-bold duration-300 hover:scale-105 hover:-translate-y-2'
+						width={30}
+						height={30}
+					/>
+				) : (
+					<FavoritesOutlineIcon
+						onClick={() => setIsFavorite(true)}
+						className='text-[var(--lightBlue)] cursor-pointer font-bold duration-300 hover:scale-105 hover:-translate-y-2'
+						width={30}
+						height={30}
+					/>
+				)}
 			</div>
 
 			<h2 className='font-bold text-[var(--lightBlue)] text-[20px]'>{weather?.name}</h2>
