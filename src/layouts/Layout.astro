@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Nav from '../components/molecules/Nav';
+import { ClientRouter } from 'astro:transitions';
 const { currentPage } = Astro.props;
 ---
 
@@ -35,8 +36,8 @@ const { currentPage } = Astro.props;
 			rel='stylesheet'
 		/>
 		<title>Weather App</title>
-	</head>
-	<body class='h-screen w-screen bg-[var(--background)] pt-4'>
+		<ClientRouter />
+	</head><body class='h-screen w-screen bg-[var(--background)] pt-4'>
 		<div class='w-full flex justify-center'>
 			<Nav
 				client:load
