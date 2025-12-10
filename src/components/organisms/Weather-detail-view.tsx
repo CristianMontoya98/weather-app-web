@@ -10,7 +10,7 @@ export default function WeatherDetailView() {
 	const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
 	useEffect(() => {
-		const weatherDataString = localStorage.getItem('weatherData');
+		const weatherDataString = localStorage.getItem('searchedWeatherData');
 		if (weatherDataString) {
 			setWeather(JSON.parse(weatherDataString));
 		}
