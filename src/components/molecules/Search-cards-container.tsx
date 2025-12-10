@@ -11,7 +11,7 @@ interface SearchCardsProps {
 export default function SearchCardsContainer({ isLoading, weather, icon }: SearchCardsProps) {
 	useEffect(() => {
 		if (weather) {
-			localStorage.setItem('weatherData', JSON.stringify(weather));
+			localStorage.setItem('searchedWeatherData', JSON.stringify(weather));
 		}
 	}, [weather]);
 	if (isLoading) {
