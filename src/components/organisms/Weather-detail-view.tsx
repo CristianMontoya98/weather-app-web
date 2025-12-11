@@ -4,10 +4,22 @@ import TemperatureCard from '../molecules/Temperature-card';
 import BackIcon from '../atoms/Icon/Back-icon';
 import FavoritesIcon from '../atoms/Icon/Favorites-icon';
 import FavoritesOutlineIcon from '../atoms/Icon/Favorites-outline-icon';
+import { useFavorites } from '../../helpers/hooks/use-favorites';
 
 export default function WeatherDetailView() {
 	const [weather, setWeather] = useState<any>(null);
 	const [isFavorite, setIsFavorite] = useState<boolean>(false);
+	const { addFavorite, removeFavorite } = useFavorites();
+
+	const handleAddFavorite = () => {
+		setIsFavorite(true);
+		addFavorite(weather);
+	};
+
+	const handleRemoveFavorite = () => {
+		setIsFavorite(false);
+		removeFavorite(weather.id);
+	};
 
 	useEffect(() => {
 		const weatherDataString = localStorage.getItem('searchedWeatherData');
@@ -36,14 +48,14 @@ export default function WeatherDetailView() {
 				/>
 				{isFavorite ? (
 					<FavoritesIcon
-						onClick={() => setIsFavorite(false)}
+						onClick={handleRemoveFavorite}
 						className='text-[var(--lightBlue)] cursor-pointer font-bold duration-300 hover:scale-105 hover:-translate-y-2'
 						width={30}
 						height={30}
 					/>
 				) : (
 					<FavoritesOutlineIcon
-						onClick={() => setIsFavorite(true)}
+						onClick={handleAddFavorite}
 						className='text-[var(--lightBlue)] cursor-pointer font-bold duration-300 hover:scale-105 hover:-translate-y-2'
 						width={30}
 						height={30}
