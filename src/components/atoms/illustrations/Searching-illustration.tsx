@@ -14,7 +14,7 @@ export const SearchingIllustration: React.FC<SearchingIllustrationProps> = ({ wi
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'
 		>
-			<g clip-path='url(#clip0_46_2724)'>
+			<g clipPath='url(#clip0_46_2724)'>
 				<path
 					d='M207.452 103.733L207 103.782L212.592 155.016L213.045 154.966L207.452 103.733Z'
 					fill='#292A2E'
