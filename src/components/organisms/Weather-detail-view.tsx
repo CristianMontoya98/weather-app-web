@@ -9,7 +9,7 @@ import { useFavorites } from '../../helpers/hooks/use-favorites';
 export default function WeatherDetailView() {
 	const [weather, setWeather] = useState<any>(null);
 	const [isFavorite, setIsFavorite] = useState<boolean>(false);
-	const { addFavorite, removeFavorite } = useFavorites();
+	const { addFavorite, removeFavorite, favorites } = useFavorites();
 
 	const handleAddFavorite = () => {
 		setIsFavorite(true);
@@ -24,9 +24,14 @@ export default function WeatherDetailView() {
 	useEffect(() => {
 		const weatherDataString = localStorage.getItem('searchedWeatherData');
 		if (weatherDataString) {
-			setWeather(JSON.parse(weatherDataString));
+			const weatherData = JSON.parse(weatherDataString);
+			setWeather(weatherData);
+			if (weatherData && favorites) {
+				const isFav = favorites.some((fav: any) => fav.id === weatherData.id);
+				setIsFavorite(isFav);
+			}
 		}
-	}, []);
+	}, [favorites]);
 
 	const icon = weather?.weather[0]?.main;
 
