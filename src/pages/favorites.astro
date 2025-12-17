@@ -1,6 +1,7 @@
 ---
+import FavoritesComponent from '../components/organisms/Favorites';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout currentPage='favorites' />
-<h1>Favorites</h1>
+<FavoritesComponent client:load />
