@@ -7,12 +7,13 @@ export default function FavoritesComponent() {
 	return (
 		<div>
 			{favorites.length > 0 ? (
-				<div className='flex flex-col justify-center items-center'>
+				<div className='flex flex-col justify-center items-center pt-10'>
 					{favorites.map((city) => (
 						<WeatherCard
 							key={city.id}
 							weather={city}
 							icon={city.weather[0].main}
+							isFromFavorites={true}
 						/>
 					))}
 				</div>
