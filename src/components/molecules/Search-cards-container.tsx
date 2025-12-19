@@ -30,6 +30,7 @@ export default function SearchCardsContainer({ isLoading, weather, icon }: Searc
 					<WeatherCard
 						weather={weather}
 						icon={icon}
+						isFromFavorites={false}
 					/>
 				</div>
 			);
