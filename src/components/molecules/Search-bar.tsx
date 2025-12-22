@@ -24,7 +24,7 @@ export default function SearchBar({ setWeatherData, setIcon, setIsLoading }: Sea
 				type='text'
 				value={query}
 				onChange={handleChange}
-				placeholder='Buscar ciudad...'
+				placeholder='Busca una ciudad...'
 				className='bg-transparent focus:outline-none text-white placeholder:text-[var(--gray)] w-full'
 			/>
 			<button
