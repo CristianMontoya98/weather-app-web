@@ -18,7 +18,10 @@ export default function FavoritesComponent() {
 					))}
 				</div>
 			) : (
-				<p className='text-white text-center'>You have no favorite cities yet.</p>
+				<div className='flex flex-col items-center justify-center mt-5'>
+					<h2 className='text-[var(--lightBlue)] font-bold text-[20px] text-center'>Todavía no tienes favoritos.</h2>
+					<p className='text-[18px] text-[var(--lightBlueTransparency)] italic'>Agrega ciudades a tu lista de favoritos desde el detalle</p>
+				</div>
 			)}
 		</div>
 	);
