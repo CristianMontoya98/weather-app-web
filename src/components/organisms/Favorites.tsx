@@ -1,4 +1,5 @@
 import { useFavorites } from '../../helpers/hooks/use-favorites';
+import EmptyBoxIllustration from '../atoms/illustrations/Empty-box-illustration';
 import WeatherCard from '../molecules/Weather-card';
 
 export default function FavoritesComponent() {
@@ -19,8 +20,14 @@ export default function FavoritesComponent() {
 				</div>
 			) : (
 				<div className='flex flex-col items-center justify-center mt-5'>
+					<EmptyBoxIllustration
+						height={320}
+						width={320}
+					/>
 					<h2 className='text-[var(--lightBlue)] font-bold text-[20px] text-center'>Todavía no tienes favoritos.</h2>
-					<p className='text-[18px] text-[var(--lightBlueTransparency)] italic'>Agrega ciudades a tu lista de favoritos desde el detalle</p>
+					<p className='text-[18px] text-[var(--lightBlueTransparency)] italic text-center p-5'>
+						Agrega ciudades a tu lista de favoritos desde el detalle
+					</p>
 				</div>
 			)}
 		</div>
