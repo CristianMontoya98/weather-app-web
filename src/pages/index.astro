@@ -1,7 +1,9 @@
 ---
+import Footer from '../components/molecules/footer.astro';
 import HomeComponent from '../components/organisms/Home';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout currentPage='home' />
 <HomeComponent client:load />
+<Footer />
