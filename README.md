@@ -15,6 +15,7 @@ Weather project to see local and international weather, in this app you can:
 - 🏠 Home: See the current local weather and a three hour forecast.
 - 🔍 Search: Search any city of the world, visualize the card and expand the information.
 - ♥️ Favorites: Save your favorites.
+-  Footer: Developer information
 
 ## ℹ️ API used
 - [OpenWeather](https://openweathermap.org/api)
