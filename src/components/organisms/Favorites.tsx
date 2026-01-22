@@ -1,10 +1,13 @@
+import { useEffect } from 'react';
 import { useFavorites } from '../../helpers/hooks/use-favorites';
 import EmptyBoxIllustration from '../atoms/illustrations/Empty-box-illustration';
 import WeatherCard from '../molecules/Weather-card';
 
 export default function FavoritesComponent() {
 	const { favorites } = useFavorites();
-
+	useEffect(() => {
+		localStorage.setItem('isFromSearch', 'false');
+	}, []);
 	return (
 		<div>
 			{favorites.length > 0 ? (
