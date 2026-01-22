@@ -12,6 +12,7 @@ export default function SearchCardsContainer({ isLoading, weather, icon }: Searc
 	useEffect(() => {
 		if (weather) {
 			localStorage.setItem('searchedWeatherData', JSON.stringify(weather));
+			localStorage.setItem('isFromSearch', 'true');
 		}
 	}, [weather]);
 	if (isLoading) {
