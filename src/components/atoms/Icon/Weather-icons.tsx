@@ -1,4 +1,4 @@
-const Icons = (icon: string, international: boolean, time?: any) => {
+const Icons = (icon: string, international: boolean, time?: string) => {
 	if (international) {
 		switch (icon) {
 			case 'Thunderstorm':

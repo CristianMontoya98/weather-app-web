@@ -42,7 +42,7 @@ export default function HomeComponent() {
 	return (
 		<div className='mt-5 flex flex-col items-center justify-center pb-7'>
 			<h2 className='font-bold text-[var(--lightBlue)] text-[20px]'>{city?.local_names?.es || city?.name}</h2>
-			<p className='font-bold text-[var(--lighterBlue)] text-[20px]'>{weatherData?.weather[0]?.description}</p>
+			<p className='font-bold text-[var(--lighterBlue)] text-[20px]'>{weatherData?.description}</p>
 			<img
 				className='icon'
 				src={Icons(icon, false, currentTime?.moment)}
@@ -55,7 +55,9 @@ export default function HomeComponent() {
 
 			<p className='font-bold text-[var(--lightBlueTransparency)] text-[20px]'>{currentTime?.time}</p>
 
-			<p className='font-bold text-[var(--lightBlue)] text-[64px]'>{weatherData?.main?.temp ? `${Math.trunc(weatherData.main.temp)}°C` : ''}</p>
+			<p className='font-bold text-[var(--lightBlue)] text-[64px]'>
+				{weatherData?.temperature ? `${Math.trunc(weatherData.temperature)}°C` : ''}
+			</p>
 			<div className='flex gap-9 justify-center items-center mb-[23px]'>
 				<div className='flex justify-center items-center'>
 					<img
@@ -64,7 +66,7 @@ export default function HomeComponent() {
 						width={60}
 						height={60}
 					/>
-					<p className='text-[var(--lighterBlue)] text-[20px]'>{weatherData?.main?.humidity ? `${weatherData.main.humidity}%` : ''}</p>
+					<p className='text-[var(--lighterBlue)] text-[20px]'>{weatherData?.humidity ? `${weatherData.humidity}%` : ''}</p>
 				</div>
 				<div className='flex justify-center items-center gap-4'>
 					<img
@@ -73,19 +75,19 @@ export default function HomeComponent() {
 						width={30}
 						height={30}
 					/>
-					<p className='text-[var(--lighterBlue)] text-[20px]'>{weatherData?.main?.sea_level ? `${weatherData.main.sea_level}mts` : ''}</p>
+					<p className='text-[var(--lighterBlue)] text-[20px]'>{weatherData?.sea_level ? `${weatherData.sea_level} mts` : ''}</p>
 				</div>
 			</div>
 			<div className='flex gap-3'>
 				<TemperatureCard
 					title='Max'
-					data={weatherData?.main?.temp_max ? `${Math.trunc(weatherData.main.temp_max)}°C` : ''}
+					data={weatherData?.max ? `${Math.trunc(weatherData.max)}°C` : ''}
 					image='src/assets/icons/thermometer-warmer.svg'
 					alt='Imagen de termometro caliente'
 				/>
 				<TemperatureCard
 					title='Min'
-					data={weatherData?.main?.temp_min ? `${Math.trunc(weatherData.main.temp_min)}°C` : ''}
+					data={weatherData?.min ? `${Math.trunc(weatherData.min)}°C` : ''}
 					image='src/assets/icons/thermometer-colder.svg'
 					alt='Imagen de termometro frio'
 				/>

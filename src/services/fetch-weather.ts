@@ -1,9 +1,12 @@
+import { mapWeatherToUI } from "../types/weather.mapper";
+
+
 export const fetchWeather = (url:string, setData:any, setIcon:any, setIsLoading:any) => {
     fetch(url)
 				.then((response) => response.json())
 				.then((data) => {
-					setData(data);
-					console.log('weather', data);
+					setData(mapWeatherToUI(data));
+					console.log(mapWeatherToUI(data));
 					setIcon(data.weather[0].main);
 					const loadingData = setInterval(() => {
 						setIsLoading(false);
@@ -11,6 +14,5 @@ export const fetchWeather = (url:string, setData:any, setIcon:any, setIsLoading:
 					return () => clearInterval(loadingData);
 				}).catch((error) => {
 					setIsLoading(false);
-					console.log('error', error);
 				} );
 }

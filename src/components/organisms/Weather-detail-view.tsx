@@ -41,7 +41,6 @@ export default function WeatherDetailView() {
 				setWeather(weatherData);
 				setIcon(weatherData?.weather[0]?.main);
 			}
-			console.log('clima en detail, ', weather);
 			if (weatherData && favorites) {
 				const isFav = favorites.some((fav: any) => fav.id === weatherData.id);
 				setIsFavorite(isFav);

@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useState, type SetStateAction } from 'react';
 import SearchIcon from '../atoms/Icon/Search-icon';
 import { fetchWeather } from '../../services/fetch-weather';
 import { API_ENDPOINTS } from '../../services/api';
+import React from 'react';
 interface SearchBarProps {
 	setWeatherData: any;
-	setIcon: any;
-	setIsLoading: any;
+	setIcon: React.Dispatch<SetStateAction<string>>;
+	setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export default function SearchBar({ setWeatherData, setIcon, setIsLoading }: SearchBarProps) {
 	const [query, setQuery] = useState('');
