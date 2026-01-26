@@ -2,11 +2,10 @@ import Icons from '../atoms/Icon/Weather-icons';
 
 interface WeatherCardProps {
 	weather: any;
-	icon: string;
 	isFromFavorites: boolean;
 }
 
-export default function WeatherCard({ weather, icon, isFromFavorites }: WeatherCardProps) {
+export default function WeatherCard({ weather, isFromFavorites }: WeatherCardProps) {
 	const handleClick = () => {
 		window.location.href = '/detail';
 		localStorage.setItem('searchedWeatherData', JSON.stringify(weather));
@@ -28,7 +27,7 @@ export default function WeatherCard({ weather, icon, isFromFavorites }: WeatherC
 			) : (
 				<img
 					className='icon'
-					src={Icons(icon, true)}
+					src={Icons(weather?.icon, true)}
 					alt='weather icon'
 					width={90}
 					height={90}
@@ -37,7 +36,7 @@ export default function WeatherCard({ weather, icon, isFromFavorites }: WeatherC
 
 			<div className='bg-[var(--lightBlue)]/60 w-1 h-[120px] rounded-full ms-5'></div>
 			<div className='w-full h-full flex flex-col items-center justify-center'>
-				<p className='text-[var(--lightBlue)] text-[20px] font-bold ms-5'>{weather?.name}</p>
+				<p className='text-[var(--lightBlue)] text-[20px] font-bold ms-5'>{weather?.city}</p>
 			</div>
 		</div>
 	);

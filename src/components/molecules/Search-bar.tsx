@@ -1,19 +1,34 @@
-import { useState, type SetStateAction } from 'react';
+import { useState, type Dispatch, type SetStateAction } from 'react';
 import SearchIcon from '../atoms/Icon/Search-icon';
 import { fetchWeather } from '../../services/fetch-weather';
 import { API_ENDPOINTS } from '../../services/api';
 import React from 'react';
+import { mapWeatherToUI, type WeatherUI } from '../../types/weather.mapper';
 interface SearchBarProps {
-	setWeatherData: any;
-	setIcon: React.Dispatch<SetStateAction<string>>;
+	setWeatherData: Dispatch<SetStateAction<WeatherUI | null>>;
 	setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+	setIsNotFound: React.Dispatch<React.SetStateAction<boolean>>;
 }
-export default function SearchBar({ setWeatherData, setIcon, setIsLoading }: SearchBarProps) {
+export default function SearchBar({ setWeatherData, setIsLoading, setIsNotFound }: SearchBarProps) {
 	const [query, setQuery] = useState('');
+	const getWeatherData = async () => {
+		try {
+			setIsLoading(true);
+			const apiData = await fetchWeather(API_ENDPOINTS.CURRENT_WEATHER(query));
+			const uiData = mapWeatherToUI(apiData);
+			setWeatherData(uiData);
+			setIsNotFound(false);
+		} catch (error) {
+			setWeatherData(null);
+			setIsNotFound(true);
+			console.error((error as { message: string }).message);
+		} finally {
+			setIsLoading(false);
+		}
+	};
 	const handleSearch = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
-		setIsLoading(true);
-		fetchWeather(API_ENDPOINTS.CURRENT_WEATHER(query), setWeatherData, setIcon, setIsLoading);
+		getWeatherData();
 	};
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery(e.target.value);

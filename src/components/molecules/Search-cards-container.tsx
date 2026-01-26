@@ -2,17 +2,20 @@ import { useEffect } from 'react';
 import SearchingIllustration from '../atoms/illustrations/Searching-illustration';
 import NotFound from './Not-found';
 import WeatherCard from './Weather-card';
+import type { WeatherUI } from '../../types/weather.mapper';
+import type { WeatherApiError } from '../../types/weather.api.types';
 
 interface SearchCardsProps {
 	isLoading: boolean;
-	weather: any;
-	icon: string;
+	weather: WeatherUI | WeatherApiError | null;
+	isNotFound: boolean;
 }
-export default function SearchCardsContainer({ isLoading, weather, icon }: SearchCardsProps) {
+export default function SearchCardsContainer({ isLoading, weather, isNotFound }: SearchCardsProps) {
 	useEffect(() => {
 		if (weather) {
 			localStorage.setItem('searchedWeatherData', JSON.stringify(weather));
 			localStorage.setItem('isFromSearch', 'true');
+			console.log('Dataa in the search ', weather);
 		}
 	}, [weather]);
 	if (isLoading) {
@@ -23,26 +26,26 @@ export default function SearchCardsContainer({ isLoading, weather, icon }: Searc
 		);
 	}
 	if (weather) {
-		if (weather?.cod === '404') {
-			return <NotFound />;
-		} else {
-			return (
-				<div className='w-full flex flex-col items-center'>
-					<WeatherCard
-						weather={weather}
-						icon={icon}
-						isFromFavorites={false}
-					/>
-				</div>
-			);
-		}
+		return (
+			<div className='w-full flex flex-col items-center'>
+				<WeatherCard
+					weather={weather}
+					isFromFavorites={false}
+				/>
+			</div>
+		);
 	}
-	return (
-		<div className='w-full flex flex-col items-center mt-[100px]'>
-			<SearchingIllustration
-				height={300}
-				width={300}
-			/>
-		</div>
-	);
+
+	if (isNotFound) {
+		return <NotFound />;
+	} else {
+		return (
+			<div className='w-full flex flex-col items-center mt-[100px]'>
+				<SearchingIllustration
+					height={300}
+					width={300}
+				/>
+			</div>
+		);
+	}
 }
