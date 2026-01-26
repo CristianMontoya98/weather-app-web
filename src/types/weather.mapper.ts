@@ -29,7 +29,7 @@ export const mapWeatherToUI = (data: WeatherData): WeatherUI => {
     min: Math.round(data?.main?.temp_min),
     max: Math.round(data?.main?.temp_max),
     description: weather?.description,
-    icon: weather?.icon,
+    icon: weather?.main,
     humidity: data?.main?.humidity,
     windSpeed: data?.wind?.speed,
     sea_level: data?.main?.sea_level,
