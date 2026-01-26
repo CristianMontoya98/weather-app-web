@@ -6,14 +6,13 @@ import type { UserTime } from '../../types/user';
 import { fetchWeather } from '../../services/fetch-weather';
 import Icons from '../atoms/Icon/Weather-icons';
 import TemperatureCard from '../molecules/Temperature-card';
+import { mapWeatherToUI } from '../../types/weather.mapper';
 
 export default function HomeComponent() {
 	const [city, setCity] = useState<any>(null);
 	const [weatherData, setWeatherData] = useState<any>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [currentTime, setCurrentTime] = useState<UserTime>(getUserTime().userTime);
-	const [icon, setIcon] = useState<string>('');
-
 	useEffect(() => {
 		getUserLocation().then((data: any) => {
 			setCity(data.locationData[0]);
@@ -26,9 +25,22 @@ export default function HomeComponent() {
 	}, []);
 
 	useEffect(() => {
-		if (city) {
-			fetchWeather(API_ENDPOINTS.CURRENT_WEATHER(city.name), setWeatherData, setIcon, setIsLoading);
-		}
+		const getWeatherData = async () => {
+			if (city) {
+				try {
+					setIsLoading(true);
+					const apiData = await fetchWeather(API_ENDPOINTS.CURRENT_WEATHER(city.name));
+					const uiData = mapWeatherToUI(apiData);
+					setWeatherData(uiData);
+				} catch (error) {
+					setWeatherData(null);
+					console.error((error as { message: string }).message);
+				} finally {
+					setIsLoading(false);
+				}
+			}
+		};
+		getWeatherData();
 	}, [city]);
 
 	if (isLoading) {
@@ -45,7 +57,7 @@ export default function HomeComponent() {
 			<p className='font-bold text-[var(--lighterBlue)] text-[20px]'>{weatherData?.description}</p>
 			<img
 				className='icon'
-				src={Icons(icon, false, currentTime?.moment)}
+				src={Icons(weatherData?.icon, false, currentTime?.moment)}
 				alt='icon-weather'
 				width={250}
 				height={250}

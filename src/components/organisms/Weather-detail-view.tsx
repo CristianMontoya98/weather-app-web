@@ -12,7 +12,6 @@ export default function WeatherDetailView() {
 	const [weather, setWeather] = useState<any>(null);
 	const [city, setCity] = useState<any>(null);
 	const [isFavorite, setIsFavorite] = useState<boolean>(false);
-	const [icon, setIcon] = useState<string>('');
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const { addFavorite, removeFavorite, favorites } = useFavorites();
 
@@ -35,11 +34,10 @@ export default function WeatherDetailView() {
 				setCity(weatherData?.name);
 				setIsLoading(true);
 				if (city !== null) {
-					fetchWeather(API_ENDPOINTS.CURRENT_WEATHER(city), setWeather, setIcon, setIsLoading);
+					fetchWeather(API_ENDPOINTS.CURRENT_WEATHER(city), setWeather, setIsLoading);
 				}
 			} else {
 				setWeather(weatherData);
-				setIcon(weatherData?.weather[0]?.main);
 			}
 			if (weatherData && favorites) {
 				const isFav = favorites.some((fav: any) => fav.id === weatherData.id);
@@ -88,7 +86,7 @@ export default function WeatherDetailView() {
 				<p className='font-bold text-[var(--lighterBlue)] text-[20px]'>{weather?.weather[0]?.description}</p>
 				<img
 					className='icon'
-					src={Icons(icon, true)}
+					src={Icons(weather?.icon, true)}
 					alt='weather icon'
 					width={250}
 					height={250}
