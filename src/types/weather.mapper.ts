@@ -4,6 +4,7 @@ import type { WeatherData } from './weather.types';
  * Modelo que el UI realmente necesita
  */
 export interface WeatherUI {
+  id:number
   city: string;
   temperature: number;
   feelsLike: number;
@@ -14,6 +15,7 @@ export interface WeatherUI {
   humidity: number;
   windSpeed: number;
   sea_level?: number;
+  country?: string;
 }
 
 /**
@@ -23,6 +25,7 @@ export const mapWeatherToUI = (data: WeatherData): WeatherUI => {
   const weather = data?.weather[0];
 
   return {
+    id: data?.id,
     city: data?.name,
     temperature: Math.round(data?.main?.temp),
     feelsLike: Math.round(data?.main.feels_like),
@@ -33,5 +36,6 @@ export const mapWeatherToUI = (data: WeatherData): WeatherUI => {
     humidity: data?.main?.humidity,
     windSpeed: data?.wind?.speed,
     sea_level: data?.main?.sea_level,
+    country: data?.sys?.country
   };
 };
