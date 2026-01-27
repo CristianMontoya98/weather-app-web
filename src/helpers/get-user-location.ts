@@ -15,14 +15,14 @@ export const getUserLocation = async() => {
                         locationData
                     }
                 } catch (error) {
-                    console.log('Error al obtener ubicación:', error);
+                    console.error('Error al obtener ubicación:', error);
                 }
                 
                 resolve(data);
             },
             (err) => {
                 alert('No se pudo obtener la localización')
-                console.log(err);
+                console.error(err);
                 reject();
             }
         )

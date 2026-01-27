@@ -12,19 +12,3 @@ export const fetchWeather = async (url: string): Promise<WeatherData> => {
 
   return data as WeatherData;
 };
-
-
-/* export const fetchWeather = (url:string, setData:any,setIsLoading:any) => {
-    fetch(url)
-				.then((response) => response.json())
-				.then((data) => {
-					setData(mapWeatherToUI(data));
-					const loadingData = setInterval(() => {
-						setIsLoading(false);
-					}, 1000);
-					return () => clearInterval(loadingData);
-				}).catch((error) => {
-					setIsLoading(false);
-					console.log(error);
-				});
-} */

@@ -16,7 +16,6 @@ export default function FavoritesComponent() {
 						<WeatherCard
 							key={city.id}
 							weather={city}
-							icon={city.weather[0].main}
 							isFromFavorites={true}
 						/>
 					))}

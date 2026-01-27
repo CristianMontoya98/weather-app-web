@@ -15,7 +15,6 @@ export default function SearchCardsContainer({ isLoading, weather, isNotFound }:
 		if (weather) {
 			localStorage.setItem('searchedWeatherData', JSON.stringify(weather));
 			localStorage.setItem('isFromSearch', 'true');
-			console.log('Dataa in the search ', weather);
 		}
 	}, [weather]);
 	if (isLoading) {
