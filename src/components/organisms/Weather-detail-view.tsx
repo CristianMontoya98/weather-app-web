@@ -7,6 +7,7 @@ import FavoritesOutlineIcon from '../atoms/Icon/Favorites-outline-icon';
 import { useFavorites } from '../../helpers/hooks/use-favorites';
 import { fetchWeather } from '../../services/fetch-weather';
 import { API_ENDPOINTS } from '../../services/api';
+import { mapWeatherToUI } from '../../types/weather.mapper';
 
 export default function WeatherDetailView() {
 	const [weather, setWeather] = useState<any>(null);
@@ -28,14 +29,27 @@ export default function WeatherDetailView() {
 	useEffect(() => {
 		const weatherDataString = localStorage.getItem('searchedWeatherData');
 		const isFromSearch = localStorage.getItem('isFromSearch');
+
+		const getWeatherData = async () => {
+			if (city !== null) {
+				try {
+					const apiData = await fetchWeather(API_ENDPOINTS.CURRENT_WEATHER(city));
+					const uiData = mapWeatherToUI(apiData);
+					setWeather(uiData);
+				} catch (error) {
+					setWeather(null);
+					console.error((error as { message: string }).message);
+				} finally {
+					setIsLoading(false);
+				}
+			}
+		};
 		if (weatherDataString) {
 			const weatherData = JSON.parse(weatherDataString);
 			if (isFromSearch === 'false') {
-				setCity(weatherData?.name);
+				setCity(weatherData?.city);
 				setIsLoading(true);
-				if (city !== null) {
-					fetchWeather(API_ENDPOINTS.CURRENT_WEATHER(city), setWeather, setIsLoading);
-				}
+				getWeatherData();
 			} else {
 				setWeather(weatherData);
 			}
@@ -45,9 +59,6 @@ export default function WeatherDetailView() {
 			}
 		}
 	}, [favorites]);
-
-	/* const icon = weather?.weather[0]?.main; */
-
 	if (isLoading) {
 		return (
 			<div className='mt-5 flex flex-col items-center justify-center w-screen h-screen'>
@@ -82,8 +93,8 @@ export default function WeatherDetailView() {
 					)}
 				</div>
 
-				<h2 className='font-bold text-[var(--lightBlue)] text-[20px]'>{weather?.name}</h2>
-				<p className='font-bold text-[var(--lighterBlue)] text-[20px]'>{weather?.weather[0]?.description}</p>
+				<h2 className='font-bold text-[var(--lightBlue)] text-[20px]'>{weather?.city}</h2>
+				<p className='font-bold text-[var(--lighterBlue)] text-[20px]'>{weather?.description}</p>
 				<img
 					className='icon'
 					src={Icons(weather?.icon, true)}
@@ -92,7 +103,7 @@ export default function WeatherDetailView() {
 					height={250}
 				/>
 
-				<p className='font-bold text-[var(--lightBlue)] text-[64px]'>{weather?.main?.temp ? `${Math.trunc(weather.main.temp)}°C` : ''}</p>
+				<p className='font-bold text-[var(--lightBlue)] text-[64px]'>{weather?.temperature ? `${Math.trunc(weather.temperature)}°C` : ''}</p>
 				<div className='flex gap-9 justify-center items-center mb-[23px]'>
 					<div className='flex justify-center items-center'>
 						<img
@@ -101,7 +112,7 @@ export default function WeatherDetailView() {
 							width={60}
 							height={60}
 						/>
-						<p className='text-[var(--lighterBlue)] text-[20px]'>{weather?.main?.humidity ? `${weather.main.humidity}%` : ''}</p>
+						<p className='text-[var(--lighterBlue)] text-[20px]'>{weather?.humidity ? `${weather.humidity}%` : ''}</p>
 					</div>
 					<div className='flex justify-center items-center gap-4'>
 						<img
@@ -110,19 +121,19 @@ export default function WeatherDetailView() {
 							width={30}
 							height={30}
 						/>
-						<p className='text-[var(--lighterBlue)] text-[20px]'>{weather?.main?.sea_level ? `${weather.main.sea_level}mts` : ''}</p>
+						<p className='text-[var(--lighterBlue)] text-[20px]'>{weather?.sea_level ? `${weather.sea_level}mts` : ''}</p>
 					</div>
 				</div>
 				<div className='flex gap-3'>
 					<TemperatureCard
 						title='Max'
-						data={weather?.main?.temp_max ? `${Math.trunc(weather.main.temp_max)}°C` : ''}
+						data={weather?.max ? `${Math.trunc(weather.max)}°C` : ''}
 						image='src/assets/icons/thermometer-warmer.svg'
 						alt='Imagen de termometro caliente'
 					/>
 					<TemperatureCard
 						title='Min'
-						data={weather?.main?.temp_min ? `${Math.trunc(weather.main.temp_min)}°C` : ''}
+						data={weather?.min ? `${Math.trunc(weather.min)}°C` : ''}
 						image='src/assets/icons/thermometer-colder.svg'
 						alt='Imagen de termometro frio'
 					/>

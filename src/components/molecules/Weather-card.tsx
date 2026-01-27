@@ -10,7 +10,6 @@ export default function WeatherCard({ weather, isFromFavorites }: WeatherCardPro
 		window.location.href = '/detail';
 		localStorage.setItem('searchedWeatherData', JSON.stringify(weather));
 	};
-
 	return (
 		<div
 			onClick={handleClick}
@@ -18,7 +17,7 @@ export default function WeatherCard({ weather, isFromFavorites }: WeatherCardPro
 		>
 			{isFromFavorites === true ? (
 				<img
-					src={`https://flagcdn.com/w40/${weather.sys.country.toLowerCase()}.png`}
+					src={`https://flagcdn.com/w40/${weather?.country.toLowerCase()}.png`}
 					alt='country flag'
 					width={90}
 					height={30}
