@@ -1,7 +1,8 @@
+import type { WeatherUI } from '../../types/weather.mapper';
 import Icons from '../atoms/Icon/Weather-icons';
 
 interface WeatherCardProps {
-	weather: any;
+	weather: WeatherUI;
 	isFromFavorites: boolean;
 }
 
@@ -17,7 +18,7 @@ export default function WeatherCard({ weather, isFromFavorites }: WeatherCardPro
 		>
 			{isFromFavorites === true ? (
 				<img
-					src={`https://flagcdn.com/w40/${weather?.country.toLowerCase()}.png`}
+					src={`https://flagcdn.com/w40/${weather.country?.toLowerCase()}.png`}
 					alt='country flag'
 					width={90}
 					height={30}
