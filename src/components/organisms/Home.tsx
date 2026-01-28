@@ -6,17 +6,20 @@ import type { UserTime } from '../../types/user';
 import { fetchWeather } from '../../services/fetch-weather';
 import Icons from '../atoms/Icon/Weather-icons';
 import TemperatureCard from '../molecules/Temperature-card';
-import { mapWeatherToUI } from '../../types/weather.mapper';
+import { mapWeatherToUI, type WeatherUI } from '../../types/weather.mapper';
+import type { City } from '../../types/city.types';
 
 export default function HomeComponent() {
-	const [city, setCity] = useState<any>(null);
-	const [weatherData, setWeatherData] = useState<any>(null);
+	const [city, setCity] = useState<City | null>(null);
+	const [weatherData, setWeatherData] = useState<WeatherUI | null>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [currentTime, setCurrentTime] = useState<UserTime>(getUserTime().userTime);
 	useEffect(() => {
 		getUserLocation().then((data: any) => {
+			console.log(data);
 			setCity(data.locationData[0]);
 		});
+		console.log(city);
 		const timer = setInterval(() => {
 			setCurrentTime(getUserTime().userTime);
 		}, 60000);
