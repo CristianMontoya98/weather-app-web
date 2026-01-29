@@ -4,5 +4,5 @@ const GEO_CODING_URL = 'http://api.openweathermap.org/geo/1.0'
 
 export const API_ENDPOINTS = {
     CURRENT_WEATHER: (city:string) => `${BASE_URL}/weather?q=${city}&lang=es&appid=${API_KEY}&units=metric&lang=sp,es`,
-    CURRENT_LOCATION: (lat:any, long:any) => `${GEO_CODING_URL}/reverse?lat=${lat}&lon=${long}&appid=${API_KEY}`,
+    CURRENT_LOCATION: (lat:number, long:number) => `${GEO_CODING_URL}/reverse?lat=${lat}&lon=${long}&appid=${API_KEY}`,
 }
