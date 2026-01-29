@@ -16,7 +16,6 @@ export default function HomeComponent() {
 	const [currentTime, setCurrentTime] = useState<UserTime>(getUserTime().userTime);
 	useEffect(() => {
 		getUserLocation().then((data: any) => {
-			console.log(data);
 			setCity(data.locationData[0]);
 		});
 		console.log(city);
@@ -37,7 +36,9 @@ export default function HomeComponent() {
 					setWeatherData(uiData);
 				} catch (error) {
 					setWeatherData(null);
-					console.error((error as { message: string }).message);
+					if (error instanceof Error) {
+						console.error(error.message);
+					}
 				} finally {
 					setIsLoading(false);
 				}
