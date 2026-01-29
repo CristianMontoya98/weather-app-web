@@ -7,21 +7,23 @@ import FavoritesOutlineIcon from '../atoms/Icon/Favorites-outline-icon';
 import { useFavorites } from '../../helpers/hooks/use-favorites';
 import { fetchWeather } from '../../services/fetch-weather';
 import { API_ENDPOINTS } from '../../services/api';
-import { mapWeatherToUI } from '../../types/weather.mapper';
+import { mapWeatherToUI, type WeatherUI } from '../../types/weather.mapper';
 
 export default function WeatherDetailView() {
-	const [weather, setWeather] = useState<any>(null);
-	const [city, setCity] = useState<any>(null);
+	const [weather, setWeather] = useState<WeatherUI | null>(null);
+	const [city, setCity] = useState<string | null>(null);
 	const [isFavorite, setIsFavorite] = useState<boolean>(false);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const { addFavorite, removeFavorite, favorites } = useFavorites();
 
 	const handleAddFavorite = () => {
+		if (!weather) return;
 		setIsFavorite(true);
 		addFavorite(weather);
 	};
 
 	const handleRemoveFavorite = () => {
+		if (!weather) return;
 		setIsFavorite(false);
 		removeFavorite(weather.id);
 	};
@@ -38,14 +40,16 @@ export default function WeatherDetailView() {
 					setWeather(uiData);
 				} catch (error) {
 					setWeather(null);
-					console.error((error as { message: string }).message);
+					if (error instanceof Error) {
+						console.error(error.message);
+					}
 				} finally {
 					setIsLoading(false);
 				}
 			}
 		};
 		if (weatherDataString) {
-			const weatherData = JSON.parse(weatherDataString);
+			const weatherData: WeatherUI = JSON.parse(weatherDataString);
 			if (isFromSearch === 'false') {
 				setCity(weatherData?.city);
 				setIsLoading(true);
@@ -54,7 +58,7 @@ export default function WeatherDetailView() {
 				setWeather(weatherData);
 			}
 			if (weatherData && favorites) {
-				const isFav = favorites.some((fav: any) => fav.id === weatherData.id);
+				const isFav = favorites.some((fav) => fav.id === weatherData.id);
 				setIsFavorite(isFav);
 			}
 		}
