@@ -1,51 +1,47 @@
 import { useEffect, useState } from "react";
+import type { WeatherUI } from "../../types/weather.mapper";
 
 export interface City {
   id: number | string;
   name: string;
-  [key: string]: any;
 }
 
 export function useFavorites() {
-  const STORAGE_KEY = "favoriteCities";
-  const [favorites, setFavorites] = useState<City[]>([]);
+  const STORAGE_KEY = 'favoriteWeathers';
+  const [favorites, setFavorites] = useState<WeatherUI[]>([]);
 
   // Load initial favorites from localStorage
   useEffect(() => {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const parsed: City[] = JSON.parse(raw);
-        if (Array.isArray(parsed)) {
-          setFavorites(parsed);
-        }
+      if (!raw) return;
+
+      const parsed: unknown = JSON.parse(raw);
+
+      if (Array.isArray(parsed)) {
+        setFavorites(parsed as WeatherUI[]);
       }
     } catch (error) {
-      console.error("Error reading favorite cities:", error);
+      console.error('Error reading favorite weathers:', error);
     }
   }, []);
 
-  // Save favorites array to localStorage
-  const persist = (data: City[]) => {
+  const persist = (data: WeatherUI[]) => {
     setFavorites(data);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
   };
 
-  // Add a new city to favorites
-  const addFavorite = (city: City) => {
-    if (favorites.some((fav) => fav.id === city.id)) return;
-
-    const updated = [...favorites, city];
-    persist(updated);
+  // Add weather to favorites
+  const addFavorite = (weather: WeatherUI) => {
+    if (favorites.some((fav) => fav.id === weather.id)) return;
+    persist([...favorites, weather]);
   };
 
   // Remove favorite by ID
-  const removeFavorite = (cityId: City["id"]) => {
-    const updated = favorites.filter((city) => city.id !== cityId);
-    persist(updated);
+  const removeFavorite = (weatherId: WeatherUI['id']) => {
+    persist(favorites.filter((fav) => fav.id !== weatherId));
   };
 
-  // Optional: clear all favorites
   const clearFavorites = () => {
     persist([]);
   };
