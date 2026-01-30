@@ -77,7 +77,7 @@ export default function HomeComponent() {
 			<div className='flex gap-9 justify-center items-center mb-[23px]'>
 				<div className='flex justify-center items-center'>
 					<img
-						src='assets/icons/humidity.svg'
+						src='/assets/icons/humidity.svg'
 						alt='humidity icon'
 						width={60}
 						height={60}
@@ -86,7 +86,7 @@ export default function HomeComponent() {
 				</div>
 				<div className='flex justify-center items-center gap-4'>
 					<img
-						src='assets/icons/mdi_sea-level-rise.svg'
+						src='/assets/icons/mdi_sea-level-rise.svg'
 						alt='Sea level icon'
 						width={30}
 						height={30}
@@ -98,13 +98,13 @@ export default function HomeComponent() {
 				<TemperatureCard
 					title='Max'
 					data={weatherData?.max ? `${Math.trunc(weatherData.max)}°C` : ''}
-					image='assets/icons/thermometer-warmer.svg'
+					image='/assets/icons/thermometer-warmer.svg'
 					alt='Imagen de termometro caliente'
 				/>
 				<TemperatureCard
 					title='Min'
 					data={weatherData?.min ? `${Math.trunc(weatherData.min)}°C` : ''}
-					image='assets/icons/thermometer-colder.svg'
+					image='/assets/icons/thermometer-colder.svg'
 					alt='Imagen de termometro frio'
 				/>
 			</div>

@@ -111,7 +111,7 @@ export default function WeatherDetailView() {
 				<div className='flex gap-9 justify-center items-center mb-[23px]'>
 					<div className='flex justify-center items-center'>
 						<img
-							src='assets/icons/humidity.svg'
+							src='/assets/icons/humidity.svg'
 							alt='humidity icon'
 							width={60}
 							height={60}
@@ -120,7 +120,7 @@ export default function WeatherDetailView() {
 					</div>
 					<div className='flex justify-center items-center gap-4'>
 						<img
-							src='assets/icons/mdi_sea-level-rise.svg'
+							src='/assets/icons/mdi_sea-level-rise.svg'
 							alt='Sea level icon'
 							width={30}
 							height={30}
@@ -132,13 +132,13 @@ export default function WeatherDetailView() {
 					<TemperatureCard
 						title='Max'
 						data={weather?.max ? `${Math.trunc(weather.max)}°C` : ''}
-						image='assets/icons/thermometer-warmer.svg'
+						image='/assets/icons/thermometer-warmer.svg'
 						alt='Imagen de termometro caliente'
 					/>
 					<TemperatureCard
 						title='Min'
 						data={weather?.min ? `${Math.trunc(weather.min)}°C` : ''}
-						image='assets/icons/thermometer-colder.svg'
+						image='/assets/icons/thermometer-colder.svg'
 						alt='Imagen de termometro frio'
 					/>
 				</div>
