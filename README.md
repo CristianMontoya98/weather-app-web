@@ -1,4 +1,10 @@
-# ☁️ Weather web app
+# ☁️ Weather web app 
+
+Desktop view:
+
+<img width="1920" height="1440" alt="857_1x_shots_so" src="https://github.com/user-attachments/assets/ef1332e5-2847-417a-91a4-5671535d324b" />
+
+
 Weather project to see local and international weather, in this app you can:
 - 🏠 See the local weather without search.
 - 🌎 Search the weather of othr cities in the world.
