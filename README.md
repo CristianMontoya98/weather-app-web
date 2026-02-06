@@ -6,7 +6,7 @@ Mobile UI:
 
 Desktop UI:
 
-<img width="1920" height="1440" alt="857_1x_shots_so" src="https://github.com/user-attachments/assets/ef1332e5-2847-417a-91a4-5671535d324b" />
+<img width="960" height="720" alt="857_1x_shots_so" src="https://github.com/user-attachments/assets/ef1332e5-2847-417a-91a4-5671535d324b" />
 
 
 Weather project to see local and international weather, in this app you can:
