@@ -10,7 +10,7 @@ Weather project to see local and international weather, in this app you can:
 - 🚀 [Astro js](https://astro.build)
 - ⚛️ [React js](https://react.dev)
 - 💅 [Tailwind](https://tailwindcss.com)
-
+- ⚡ Typescript
 ## ✨ Sections
 - 🏠 Home: See the current local weather and a three hour forecast.
 - 🔍 Search: Search any city of the world, visualize the card and expand the information.
